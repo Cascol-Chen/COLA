@@ -18,14 +18,14 @@ This is the official project repository for [Cross-Device Collaborative Test-Tim
 
 **Dependencies Installation:**
 ```
-pip install cma
-pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
-pip install timm==0.9.10
+conda create -n cola python=3.8.13
+conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
+pip install timm==0.6.12
 ```
 
 **Data Preparation:**
 
-This repository contains code for evaluation on ImageNet-C/R/Sketch with Vit-Base. But feel free to use your own data and models! Please check [here 🔗](dataset/README.md) for a detailed guide on preparing these datasets.
+This repository contains code for evaluation on ImageNet-C/R/A/V2/Sketch with Vit-Base. But feel free to use your own data and models! Please check [here 🔗](dataset/README.md) for a detailed guide on preparing these datasets.
 
 # Example: ImageNet-C Experiments
 
@@ -40,7 +40,12 @@ python3 main_lifelong.py \
     --resume weights/original.pth \
     --algorithm [tent/cotta/eata/t3a/lame/eta(-cola)/sar(-cola)/deyo(-cola)]
 ```
-included in ``main_lifelong.sh``. Please refer to ``main_bp_collboration.sh, main_fp_agents.sh, main_single_domain.sh`` for collobrative and single-domain TTA experiments, respectively.
+included in ``main_lifelong.sh``. Please refer to ``main_bp_collboration.sh, main_fp_agents.sh, main_single_domain.sh`` for collobrative and single-domain TTA experiments, respectively. Note that we serve as a plug-and-play module to enhance TTA performance across scenarios.
+* on lifelong TTA: SAR (60.5%) _vs._ SAR+CoLA (64.0%), and ETA (46.4%) _vs._ ETA+CoLA (64.8%), see Table 1.
+* on bp collaborative TTA: achieves an up to 78.0 times speed up in sample efficiency on ETA, see Figure 3.
+* on single-domain TTA over mild and wild: SAR (56.1%) _vs._ SAR+CoLA (58.1%), and ETA (56.1%) _vs._ ETA+CoLA (59.3%), see Table 4.
+<!-- * on fp collaborative TTA: improves accuracy by over 30% on ImAgeNet-C with efficiency similar to standard inference, see Table 3 and 5. -->
+
 
 # Correspondence
 
@@ -49,7 +54,7 @@ Please contact Guohao Chen by [chenguohao987 at gmail.com] and Shuaicheng Niu by
 
 # Citation
 
-If our CoLA method for lifelong, collaborative, and single-domain TTA enhancement or our cross-deivce collaborative TTA setting is helpful in your research, please consider citing our paper:
+If you find our plug-and-play CoLA method for lifelong, collaborative, single-domain TTA enhancement—or our cross-device collaborative TTA setting—beneficial to your research, please consider citing our paper:
 
 ```
 @inproceedings{chen2024cross,
@@ -60,4 +65,5 @@ If our CoLA method for lifelong, collaborative, and single-domain TTA enhancemen
 }
 ```
 
-The source code will be soon available....
+# Acknowledgement
+The code is inspired by [EATA 🔗](https://github.com/mr-eggplant/EATA) and [FOA 🔗](https://github.com/mr-eggplant/FOA)
