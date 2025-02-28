@@ -40,7 +40,7 @@ python3 main_lifelong.py \
     --resume weights/original.pth \
     --algorithm [tent/cotta/eata/t3a/lame/eta(-cola)/sar(-cola)/deyo(-cola)]
 ```
-included in ``main_lifelong.sh``. Please refer to ``main_bp_collboration.sh, main_fp_agents.sh, main_single_domain.sh`` for collobrative and single-domain TTA experiments, respectively. Note that we serve as a plug-and-play module to enhance TTA performance across scenarios.
+included in ``main_lifelong.sh``. Please refer to ``main_bp_collboration.sh, main_fp_agents.sh, main_single_domain.sh`` for collobrative and single-domain TTA experiments, respectively. We serve as a plug-and-play module to enhance TTA performance across scenarios.
 * on lifelong TTA: SAR (60.5%) _vs._ SAR+CoLA (64.0%), and ETA (46.4%) _vs._ ETA+CoLA (64.8%), see Table 1.
 * on bp collaborative TTA: achieves an up to 78.0 times speed up in sample efficiency on ETA, see Figure 3.
 * on single-domain TTA over mild and wild: SAR (56.1%) _vs._ SAR+CoLA (58.1%), and ETA (56.1%) _vs._ ETA+CoLA (59.3%), see Table 4.
